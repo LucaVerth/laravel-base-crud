@@ -6,6 +6,9 @@
             <h2>Comics List</h2>
         </div>
         <div class="row">
+            <a class="btn btn-primary my-2" href="{{route('comics.create')}}">Add New Comic</a>
+        </div>
+        <div class="row">
             <table class="table">
                 <thead>
                     <tr>
@@ -25,7 +28,6 @@
                             <td>{{$comic->sale_date}}</td>
                             <td>
                                 <a class="btn btn-success" href="{{route('comics.show', $comic)}}">Show</a>
-                                <a class="btn btn-primary" href="#">Edit</a>
                                 <a class="btn btn-danger" href="#">Delete</a>
                             </td>
                         </tr>

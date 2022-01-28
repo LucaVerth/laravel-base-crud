@@ -5,7 +5,11 @@
     <div class="container">
         <div class="row">
             <h2>Comic Details</h2>
+
         </div>
+        <span>
+            <a class="btn btn-primary my-2" href="{{route('comics.edit', $comic)}}">EDIT</a>
+         </span>
         <div class="row">
             <ul class="list-group">
                 <li class="list-group-item">Comic Title: {{$comic['title']}}</li>
