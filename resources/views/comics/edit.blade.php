@@ -47,8 +47,9 @@
                             rows="5"> {{ $comic->description }} </textarea>
                     </div>
                     <div class="form-buttons">
-                        <button type="reset" class="btn btn-secondary">Reset</button>
-                        <button type="submit" class="btn btn-success">Edit</button>
+                        <a href="{{route('comics.index')}}">Back to List</a>
+                        <button type="reset" class="btn btn-secondary m-2">Reset all Fields</button>
+                        <button type="submit" class="btn btn-success m-2">Edit</button>
                     </div>
                 </form>
             </div>

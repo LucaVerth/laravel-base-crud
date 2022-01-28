@@ -6,7 +6,7 @@
             <h2>Comics List</h2>
         </div>
         <div class="row">
-            <a class="btn btn-primary my-2" href="{{route('comics.create')}}">Add New Comic</a>
+            <a class="btn btn-primary my-2" href="{{ route('comics.create') }}">Add New Comic</a>
         </div>
         <div class="row">
             <table class="table">
@@ -16,29 +16,35 @@
                         <th scope="col">Title</th>
                         {{-- <th scope="col">Series</th> --}}
                         <th scope="col">Sale Date</th>
-                        <th colspan="3" scope="col">Settings</th>
+                        <th colspan="2" scope="col">Settings</th>
                     </tr>
                 </thead>
                 <tbody>
                     @forelse ($comics_list as $comic)
                         <tr>
-                            <th scope="row">{{$comic->id}}</th>
-                            <td>{{$comic->title}}</td>
+                            <th scope="row">{{ $comic->id }}</th>
+                            <td>{{ $comic->title }}</td>
                             {{-- <td>{{$comic->series}}</td> --}}
-                            <td>{{$comic->sale_date}}</td>
+                            <td>{{ $comic->sale_date }}</td>
                             <td>
-                                <a class="btn btn-success" href="{{route('comics.show', $comic)}}">Show</a>
-                                <a class="btn btn-danger" href="#">Delete</a>
+                                <a class="btn btn-success" href="{{ route('comics.show', $comic) }}">Show</a>
+                            </td>
+                            <td>
+                                <form action="{{ route('comics.destroy', $comic) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                </form>
                             </td>
                         </tr>
                     @empty
 
-                    <h2>Nessun Risultato trovato</h2>
+                        <h2>Nessun Risultato trovato</h2>
 
                     @endforelse
                 </tbody>
             </table>
-            {{$comics_list->links()}}
+            {{ $comics_list->links() }}
         </div>
     </div>
 @endsection

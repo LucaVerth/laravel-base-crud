@@ -39,8 +39,9 @@
                     <textarea for="description" class="form-control" name="description" id="description" cols="15" rows="5"></textarea>
                 </div>
                 <div class="form-buttons">
-                    <button type="reset" class="btn btn-secondary">Reset</button>
-                    <button type="submit" class="btn btn-success">Create</button>
+                    <a href="{{url()->previous()}}">Back to List</a>
+                    <button type="reset" class="btn btn-secondary m-2">Reset all Fields</button>
+                    <button type="submit" class="btn btn-success m-2">Create</button>
                 </div>
             </form>
         </div>

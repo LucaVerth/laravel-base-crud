@@ -22,6 +22,6 @@
                 <li class="list-group-item">Comic Descpription: {{$comic['description']}}</li>
             </ul>
         </div>
-        <a class="btn btn-primary mt-4" href="{{url()->previous()}}">Back to Comics List</a>
+        <a class="btn btn-primary mt-4" href="{{route('comics.index')}}">Back to Comics List</a>
     </div>
 @endsection
