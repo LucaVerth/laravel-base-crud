@@ -9,6 +9,13 @@
             <a class="btn btn-primary my-2" href="{{ route('comics.create') }}">Add New Comic</a>
         </div>
         <div class="row">
+            <div class="col-12">
+                @if (session('delete'))
+                    <div class="alert alert-danger" role="alert">
+                        {{ session('delete') }}
+                    </div>
+                @endif
+            </div>
             <table class="table">
                 <thead>
                     <tr>
@@ -30,7 +37,7 @@
                                 <a class="btn btn-success" href="{{ route('comics.show', $comic) }}">Show</a>
                             </td>
                             <td>
-                                <form action="{{ route('comics.destroy', $comic) }}" method="POST">
+                                <form onsubmit="return confirm('Confirm you wanna delete the following {{ $comic->title }} ?')" action="{{ route('comics.destroy', $comic) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger">Delete</button>
