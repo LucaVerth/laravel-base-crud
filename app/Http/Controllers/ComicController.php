@@ -39,7 +39,7 @@ class ComicController extends Controller
     public function store(Request $request)
     {
 
-        $request->validate($this->validationValues());
+        $request->validate($this->validationValues(), $this->validationErrors());
         $data = $request->all();
         $new_comic = new Comic();
         $data['slug'] = $this->createSlugUrl($data['title']);
@@ -83,7 +83,7 @@ class ComicController extends Controller
     public function update(Request $request, Comic $comic)
     {
 
-        $request->validate($this->validationValues());
+        $request->validate($this->validationValues(), $this->validationErrors());
         $data = $request->all();
         $data['slug'] = $this->createSlugUrl($data['title']);
         $comic->update($data);
@@ -117,6 +117,13 @@ class ComicController extends Controller
             'sale_date' => 'Required|date_format:Y-m-d',
             'type' => 'Required|min:3|max:45',
             'description' => 'Required|min:5'
+        ];
+    }
+    private function validationErrors(){
+        return [
+            'title.required' => 'Title field is empty or invalid',
+            'title.min' => 'Title characters must be at least :min',
+            'title.max' => 'Title must not be greater than :max characters',
         ];
     }
 }
